@@ -1,10 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-<title>Redirecting...</title>
-<meta http-equiv="refresh" content="0; url=./shooting.html">
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まほうつかい まいまい</title>
+    <meta property="og:title" content="まほうつかい まいまい">
+    <meta property="og:description" content="「まいまい」が魔法使いになって活躍するシューティングゲーム！">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://akkeynoa.web.fc2.com/game/shooting/shooting.html">
+    <meta property="og:image" content="https://akkeynoa.web.fc2.com/game/shooting/ogp-image.png">
+    <meta property="og:site_name" content="まほうつかい まいまい">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="shooting.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Yusei+Magic&display=swap" rel="stylesheet">
+    
+    <!-- ★★★ ここから追加 ★★★ -->
+    <style>
+        /* 操作方法モーダルのスタイル */
+        #howToPlayModal {
+            display: none; /* 初期状態は非表示 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            padding: 30px;
+            background: linear-gradient(135deg, #4B0082, #8A2BE2);
+            border: 5px solid #DA70D6;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            z-index: 2000;
+            color: white;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+        }
+        #howToPlayModal h2 {
+            font-family: 'Yusei Magic', sans-serif;
+            text-align: center;
+            font-size: 32px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        }
+        #howToPlayModal ul {
+            list-style: none;
+            padding: 0;
+            font-size: 20px;
+        }
+        #howToPlayModal li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        #howToPlayModal li img {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+        #howToPlayModal .modal-close-button {
+            display: block;
+            margin: 30px auto 0;
+            width: 200px;
+        }
+    </style>
+    <!-- ★★★ ここまで追加 ★★★ -->
+
 </head>
 <body>
-<p>If you are not redirected automatically, follow this <a href="./shooting.html">link to the game</a>.</p>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div id="videoContainer">
+        <video id="introVideo" src="video/intro.mp4" width="800" height="600" muted playsinline></video>
+        <button id="skipButton" class="sound-toggle-button" style="top: 20px; left: 20px; right: auto; bottom: auto;">スキップ</button>
+    </div>
+    <div id="videoContainer2" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+        <video id="video1" src="video/video1.mp4" width="800" height="600" muted playsinline></video>
+        <button id="skipButton2" class="sound-toggle-button" style="top: 20px; left: 20px; right: auto; bottom: auto;">スキップ</button>
+    </div>
+    
+    <!-- ご提示のHTMLでは style="display: none;" がありましたが、CSS側で制御するため削除します -->
+    <button id="soundToggleButton" class="sound-toggle-button">♪ ON</button>
+
+    <div id="clearScreenButtons">
+        <button id="retryButton" class="game-button">もう一度プレイする</button>
+        <button id="nextStageButton" class="game-button">ステージ2へ</button>
+    </div>
+
+    <!-- ★★★ ここから追加 ★★★ -->
+    <div id="howToPlayModal">
+        <h2>あそびかた</h2>
+        <ul>
+            <li>・やじるしキーで まいまいを うごかす</li>
+            <li>・スペースキーで まほうのたまを うつ</li>
+            <li><img src="images/heart_item.png" alt="ハートアイテム">まいまいのハートを 1つ ふやす</li>
+            <li><img src="images/powerup_threeway.png" alt="パワーアップ（黄）">まほうのたまを つよくする</li>
+            <li><img src="images/powerup_speed.png" alt="パワーアップ（青）">まいまいが はやくなる</li>
+        </ul>
+        <button id="closeModalButton" class="game-button modal-close-button">とじる</button>
+    </div>
+    <!-- ★★★ ここまで追加 ★★★ -->
+
+    <script src="shooting.js"></script>
 </body>
 </html>
