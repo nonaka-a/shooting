@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+     <!-- ★★★ ファビコン設定を追加 ★★★ -->
+    <link rel="icon" href="favicon.ico">
+
+    <!-- ★★★ ここまでファビコン設定を追加 ★★★ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まほうつかい まいまい - ステージ4</title>
+    <link rel="stylesheet" href="shooting.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Yusei+Magic&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+    <!-- ★★★ ここから追加 ★★★ -->
+    <div id="videoContainer" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+        <video id="finalStageIntroVideo" src="video/video3.mp4" width="800" height="600" muted playsinline></video>
+        <button id="skipButton" class="sound-toggle-button" style="top: 20px; left: 20px; right: auto; bottom: auto;">スキップ</button>
+    </div>
+    <!-- ★★★ ここまで追加 ★★★ -->
+
+    <button id="soundToggleButton" class="sound-toggle-button">♪ ON</button>
+
+    <div id="clearScreenButtons">
+        <button id="retryButton" class="game-button">もう一度プレイする</button>
+        <!-- ★★★ ここから追加 ★★★ -->
+        <button id="nextStageButton" class="game-button">最終ステージへ</button>
+        <!-- ★★★ ここまで追加 ★★★ -->
+    </div>
+
+    <script src="shooting4.js"></script>
+</body>
+</html>

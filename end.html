@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+     <!-- ★★★ ファビコン設定を追加 ★★★ -->
+    <link rel="icon" href="favicon.ico">
+
+    <!-- ★★★ ここまでファビコン設定を追加 ★★★ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エンディング</title>
+    
+    <link rel="stylesheet" href="shooting.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Yusei+Magic&display=swap" rel="stylesheet">
+    <style>
+        /* bodyの背景を格子模様にする */
+        body {
+            background-image: repeating-conic-gradient(#E7D4F0 0% 25%, #E0C0E8 0% 50%);
+            background-size: 100px 100px;
+        }
+
+        #videoContainer {
+            display: block !important;
+        }
+
+        /* クリア画面のテキストとボタンを中央に配置するためのコンテナ */
+        #clearScreenContainer {
+            display: none; /* JSで表示を切り替える */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+        }
+
+        /* パーティクル用キャンバスは shooting.css のスタイルをそのまま使う */
+      
+            /* shooting.css のスタイルが適用される */
+        
+        
+        #clearScreenContainer h1, 
+        #clearScreenContainer p {
+            color: white;
+            position: relative;
+            z-index: 2; /* パーティクルより手前 */
+        }
+
+        #clearScreenContainer h1 {
+            font-family: 'Yusei Magic', sans-serif;
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+
+        #clearScreenContainer p {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-size: 30px;
+            margin-top: 0;
+            margin-bottom: 40px;
+        }
+        
+        #startMessage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 48px;
+            font-family: 'Yusei Magic', sans-serif;
+            text-shadow: 2px 2px 8px black;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        #skipButton {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: auto;
+            bottom: auto;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+    <!-- ビデオ再生用コンテナ（shooting.cssのスタイルで中央配置される） -->
+    <div id="videoContainer">
+        <video id="endingVideo" src="video/video4.mp4" width="800" height="600"></video>
+        <div id="startMessage">エンディング</div>
+        <button id="skipButton" class="sound-toggle-button">スキップ</button>
+    </div>
+
+    <!-- パーティクル用キャンバス（shooting.cssのスタイルで中央配置される） -->
+    <canvas id="particleCanvas" width="800" height="600" style="display: none;"></canvas>
+
+    <!-- テキストとボタン用のコンテナ -->
+    <div id="clearScreenContainer">
+        <h1>ゲームクリア！</h1>
+        <p>Congratulations!</p>
+        <button id="backToTitleButton" class="game-button">タイトルへもどる</button>
+    </div>
+
+    <script src="end.js"></script>
+</body>
+</html>

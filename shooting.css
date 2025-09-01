@@ -1,0 +1,93 @@
+body { margin: 0; overflow: hidden; background-image: repeating-conic-gradient(#E7D4F0 0% 25%, #E0C0E8 0% 50%); background-size: 100px 100px; color: white; font-family: sans-serif; height: 100vh; }
+canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #8A2BE2; /* アメジスト色 */
+    border-radius: 15px; /* 角を少し丸く */
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.8), 0 0 30px rgba(255, 0, 255, 0.6); /* 紫とピンクの光 */
+    cursor: pointer; /* クリック可能なことを示す */
+}
+
+#videoContainer {
+    display: none; /* 初期状態は非表示 */
+    position: absolute; /* 絶対配置に変更 */
+    top: 50%; /* 垂直方向中央 */
+    left: 50%; /* 水平方向中央 */
+    transform: translate(-50%, -50%); /* 要素の中心を基準に中央寄せ */
+    width: 800px;
+    height: 600px;
+}
+
+.sound-toggle-button {
+    position: absolute;
+    bottom: 20px; /* 下からの位置 */
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 2px solid #8A2BE2;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000; /* 他の要素より手前に表示 */
+    transition: background-color 0.3s ease;
+  /* ★★★ ここから追加 ★★★ */
+    /* gameStateに関わらず常に表示されるようにする */
+    display: block !important; 
+}
+
+#skipButton {
+    top: 20px;
+    left: 20px;
+    right: auto;
+    bottom: auto;
+}
+
+.sound-toggle-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* ゲーム内ボタンのスタイル */
+.game-button {
+    background-color: #9370DB; /* 薄い紫色 */
+    color: white;
+    border: 3px solid #6A5ACD; /* 濃い紫色 */
+    border-radius: 15px;
+    padding: 15px 30px;
+    font-size: 24px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    display: block; /* ブロック要素にして縦に並べる */
+    margin: 0 auto; /* 中央揃え */
+    text-align: center;
+    width: 300px; /* 幅を固定 */
+    box-sizing: border-box; /* paddingとborderをwidthに含める */
+}
+
+.game-button:hover {
+    background-color: #8A2BE2; /* ホバーで少し濃い紫色 */
+    transform: translateY(-2px); /* 少し浮き上がる */
+}
+
+.game-button:active {
+    background-color: #6A5ACD; /* クリックでさらに濃い紫色 */
+    transform: translateY(0); /* 押し込まれる */
+}
+
+/* クリア画面のボタンコンテナ */
+#clearScreenButtons {
+    display: none; /* 初期状態は非表示 */
+    position: absolute;
+    top: 55%; /* ボタン全体を上に移動 */
+    left: 50%;
+    transform: translate(-50%, 0%); /* 上端を基準に配置 */
+    text-align: center;
+    z-index: 10;
+}
+
+#clearScreenButtons button:first-child {
+    margin-bottom: 20px; /* 最初のボタンの下に余白 */
+}
